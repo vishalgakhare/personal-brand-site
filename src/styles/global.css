@@ -6,8 +6,53 @@
   --line: #d9d1c4;
   --brand: #0c6c66;
   --brand-2: #08433f;
+  --surface: #ffffff;
   --card: #ffffffd4;
+  --header-bg: rgba(246, 245, 243, 0.76);
+  --page-bg: radial-gradient(1400px 420px at 0% -10%, #f3d8b4 0%, transparent 72%),
+    radial-gradient(1200px 400px at 100% -20%, #cfe7e5 0%, transparent 62%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
   --shadow: 0 16px 40px rgba(18, 21, 26, 0.08);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg-0: #0f141c;
+  --bg-1: #141a24;
+  --text-0: #eaf0f8;
+  --text-1: #b5c0cf;
+  --line: #2b384a;
+  --brand: #5fd0c6;
+  --brand-2: #95efe8;
+  --surface: #18212d;
+  --card: rgba(24, 33, 45, 0.88);
+  --header-bg: rgba(15, 20, 28, 0.78);
+  --page-bg: radial-gradient(1000px 420px at 0% -10%, #1e2f46 0%, transparent 72%),
+    radial-gradient(900px 380px at 100% -20%, #1a3b36 0%, transparent 62%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+[data-theme="colorful"] {
+  --bg-0: #fff3ea;
+  --bg-1: #f8e9ff;
+  --text-0: #1f1430;
+  --text-1: #5e4a75;
+  --line: #dcc6f2;
+  --brand: #e85d04;
+  --brand-2: #7b2cbf;
+  --surface: #fff9ff;
+  --card: rgba(255, 249, 255, 0.86);
+  --header-bg: rgba(255, 243, 234, 0.82);
+  --page-bg: radial-gradient(1200px 420px at 0% -10%, #ffd2b2 0%, transparent 72%),
+    radial-gradient(1200px 400px at 100% -20%, #e7cbff 0%, transparent 62%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+  --shadow: 0 16px 40px rgba(123, 44, 191, 0.16);
+  color-scheme: light;
 }
 
 * {
@@ -20,9 +65,7 @@ body {
   padding: 0;
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   color: var(--text-0);
-  background: radial-gradient(1400px 420px at 0% -10%, #f3d8b4 0%, transparent 72%),
-    radial-gradient(1200px 400px at 100% -20%, #cfe7e5 0%, transparent 62%),
-    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+  background: var(--page-bg);
   min-height: 100%;
 }
 
