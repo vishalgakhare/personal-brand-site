@@ -25,37 +25,6 @@ const base = import.meta.env.BASE_URL.endsWith("/")
   </div>
 </header>
 
-<script>
-  const root = document.documentElement;
-  const select = document.getElementById("theme-select");
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
-
-  const applyTheme = (mode) => {
-    const resolved = mode === "system" ? (media.matches ? "dark" : "light") : mode;
-    root.dataset.themeMode = mode;
-    root.dataset.theme = resolved;
-  };
-
-  if (select) {
-    const mode = localStorage.getItem("theme-mode") || "system";
-    select.value = mode;
-    applyTheme(mode);
-
-    select.addEventListener("change", (event) => {
-      const nextMode = event.target.value;
-      localStorage.setItem("theme-mode", nextMode);
-      applyTheme(nextMode);
-    });
-
-    media.addEventListener("change", () => {
-      const currentMode = localStorage.getItem("theme-mode") || "system";
-      if (currentMode === "system") {
-        applyTheme("system");
-      }
-    });
-  }
-</script>
-
 <style>
   header {
     position: sticky;

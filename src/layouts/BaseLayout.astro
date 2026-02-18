@@ -14,11 +14,45 @@ const { title = "Vishal Gakhare", description = "Software Engineer" } = Astro.pr
     <meta name="description" content={description} />
     <script is:inline>
       (() => {
+        const key = "theme-mode";
         const stored = localStorage.getItem("theme-mode") || "system";
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         const resolved = stored === "system" ? (prefersDark ? "dark" : "light") : stored;
         document.documentElement.dataset.themeMode = stored;
         document.documentElement.dataset.theme = resolved;
+
+        const applyTheme = (mode) => {
+          const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const next = mode === "system" ? (isDark ? "dark" : "light") : mode;
+          document.documentElement.dataset.themeMode = mode;
+          document.documentElement.dataset.theme = next;
+        };
+
+        const syncSelect = () => {
+          const select = document.getElementById("theme-select");
+          if (select) {
+            select.value = localStorage.getItem(key) || "system";
+          }
+        };
+
+        document.addEventListener("change", (event) => {
+          const target = event.target;
+          if (target instanceof HTMLSelectElement && target.id === "theme-select") {
+            localStorage.setItem(key, target.value);
+            applyTheme(target.value);
+          }
+        });
+
+        const media = window.matchMedia("(prefers-color-scheme: dark)");
+        media.addEventListener("change", () => {
+          const mode = localStorage.getItem(key) || "system";
+          if (mode === "system") {
+            applyTheme("system");
+          }
+        });
+
+        document.addEventListener("DOMContentLoaded", syncSelect);
+        document.addEventListener("astro:page-load", syncSelect);
       })();
     </script>
     <title>{title}</title>
