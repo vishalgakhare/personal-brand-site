@@ -1,0 +1,60 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<header>
+  <div class="wrapper nav">
+    <a href={base} class="brand">Vishal Gakhare</a>
+    <nav>
+      <a href={base}>Home</a>
+      <a href={`${base}blog`}>Blog</a>
+      <a href="https://linkedin.com/in/vishalgakhare" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://github.com/vishalgakhare" target="_blank" rel="noreferrer">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(8px);
+    background: rgba(246, 245, 243, 0.76);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 68px;
+  }
+
+  .brand {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: var(--text-0);
+  }
+
+  nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  nav a {
+    color: var(--text-1);
+    font-size: 0.93rem;
+  }
+
+  @media (max-width: 620px) {
+    .nav {
+      padding: 0.4rem 0;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,0 +1,84 @@
+:root {
+  --bg-0: #f6f5f3;
+  --bg-1: #ece7df;
+  --text-0: #1b1c1e;
+  --text-1: #50535a;
+  --line: #d9d1c4;
+  --brand: #0c6c66;
+  --brand-2: #08433f;
+  --card: #ffffffd4;
+  --shadow: 0 16px 40px rgba(18, 21, 26, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--text-0);
+  background: radial-gradient(1400px 420px at 0% -10%, #f3d8b4 0%, transparent 72%),
+    radial-gradient(1200px 400px at 100% -20%, #cfe7e5 0%, transparent 62%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+  min-height: 100%;
+}
+
+a {
+  color: var(--brand-2);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  width: min(1060px, 92vw);
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(7px);
+}
+
+.section {
+  margin-top: 1.5rem;
+  padding: 1.35rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .cols-2 {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: riseIn 0.55s ease both;
+}
+
+.reveal.delay {
+  animation-delay: 0.15s;
+}

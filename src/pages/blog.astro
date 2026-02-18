@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Blog | Vishal Gakhare" description="Engineering notes, lessons, and practical write-ups.">
+  <section class="card section reveal">
+    <h1 style="margin-top: 0;">Blog</h1>
+    <p style="color: var(--text-1); margin-bottom: 0;">Practical notes on software engineering, architecture, and team leadership.</p>
+  </section>
+
+  <section class="grid" style="margin-top: 1rem;">
+    {
+      posts.map((post, idx) => (
+        <article class="card section reveal" style={`animation-delay: ${0.08 * idx}s`}>
+          <h2 style="margin: 0;"><a href={`${base}blog/${post.slug}`}>{post.data.title}</a></h2>
+          <p style="margin: 0.4rem 0; color: var(--text-1);">{post.data.description}</p>
+          <small style="color: var(--text-1);">{post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</small>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

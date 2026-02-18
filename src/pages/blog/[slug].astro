@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout title={`${post.data.title} | Vishal Gakhare`} description={post.data.description}>
+  <article class="card section reveal" style="margin-top: 1rem;">
+    <p style="margin-top: 0; color: var(--text-1); font-size: 0.92rem;">{post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p>
+    <h1 style="margin-top: 0.3rem;">{post.data.title}</h1>
+    <Content />
+  </article>
+</BaseLayout>
