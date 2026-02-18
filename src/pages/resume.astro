@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+const pdfUrl = `${base}resume2024_VishalGakhare.pdf`;
+---
+
+<BaseLayout title="Resume | Vishal Gakhare" description="Resume for Vishal Gakhare in PDF format.">
+  <section class="resume-head">
+    <h1>Resume</h1>
+    <p>View the latest resume below, or download it as a PDF.</p>
+    <a href={pdfUrl} target="_blank" rel="noreferrer" class="resume-link">Download PDF</a>
+  </section>
+
+  <section class="viewer-wrap">
+    <iframe src={pdfUrl} title="Vishal Gakhare Resume PDF" class="viewer"></iframe>
+  </section>
+</BaseLayout>
+
+<style>
+  .resume-head {
+    margin: 2rem 0 1rem;
+  }
+
+  .resume-head h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .resume-head p {
+    margin: 0 0 1rem;
+    color: var(--text-1);
+  }
+
+  .resume-link {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--text-0);
+    background: var(--surface);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .viewer-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .viewer {
+    width: 100%;
+    min-height: 78vh;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: white;
+  }
+</style>
